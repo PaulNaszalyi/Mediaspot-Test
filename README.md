@@ -59,7 +59,7 @@ The base project is already set up with:
 - Store all form data (you can use **Redux Toolkit (slices or RTK Query)** but it's not mandatory)
 - Use **Material UI** for form and layout elements
 - Organize code in a **scalable, modular way**
-- Bonus: add **basic form validation\* and/or **unit tests\*\*
+- Bonus: add **basic form validation** and/or **unit tests**
 
 ### Design
 
