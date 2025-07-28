@@ -4,6 +4,7 @@ export interface Asset {
   duration: number
   thumbnailUrl: string
   type: "video" | "audio"
+  selected?: boolean
 }
 
 export interface ScreeningRequest {

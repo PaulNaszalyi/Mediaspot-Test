@@ -6,7 +6,7 @@ const Header = () => {
     const currentStep = useAppSelector(selectScreeningStep);
 
     return (
-        <>
+        <header style={{marginBottom: "56px"}}>
             <Typography component="h1" variant="h2" sx={{mb: 4}}>
                 Create a screening request
             </Typography>
@@ -44,7 +44,7 @@ const Header = () => {
                     </StepLabel>
                 </Step>
             </Stepper>
-        </>
+        </header>
     );
 }
 
