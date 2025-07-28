@@ -16,10 +16,32 @@ async function enableMocking() {
 
   // `worker.start()` returns a Promise that resolves
   // once the Service Worker is up and ready to intercept requests.
-  return worker.start();
+  return worker.start({
+    onUnhandledRequest: "warn",
+    waitUntilReady: true,
+    serviceWorker: {
+      url: '/mockServiceWorker.js'
+    }
+  }).then(() => {
+    console.log('MSW service worker registered and ready')
+  });
 }
 
 enableMocking().then(() => {
+  console.log('MSW initialized successfully')
+  ReactDOM.createRoot(document.getElementById("root")!).render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <ThemeProvider theme={ThemeDark}>
+          <CssBaseline />
+          <App />
+        </ThemeProvider>
+      </Provider>
+    </React.StrictMode>
+  );
+}).catch((error) => {
+  console.error('Failed to initialize MSW:', error)
+  // Still render the app even if MSW fails
   ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
       <Provider store={store}>
