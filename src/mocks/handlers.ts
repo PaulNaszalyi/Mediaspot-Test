@@ -49,12 +49,12 @@ const assets: Asset[] = [
 
 export const handlers = [
   // GET /api/assets
-  rest.get("/api/assets", (req, res, ctx) => {
+  rest.get("/api/assets", (_req, res, ctx) => {
     return res(ctx.delay(500), ctx.status(200), ctx.json(assets))
   }),
 
   // POST /api/screenings
-  rest.post<ScreeningRequest>("/api/screenings", (req, res, ctx) => {
+  rest.post<ScreeningRequest>("/api/screenings", (_req, res, ctx) => {
     const screeningResponse: ScreeningResponse = {
       id: Math.random().toString(36).substring(2, 9),
       url: `https://screening.example.com/${Math.random().toString(36).substring(2, 9)}`,
