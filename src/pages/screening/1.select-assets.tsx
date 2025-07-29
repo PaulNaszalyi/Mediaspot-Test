@@ -37,6 +37,8 @@ const SelectAssets = () => {
         fetch('/api/assets')
             .then(res => (res.ok ? res.json() : Promise.reject(res.statusText)))
             .then(assets => {
+                setTimeout(() => {
+                }, 1500);
                 setAssets(assets);
             })
             .catch(err => console.error('Fetch error:', err));

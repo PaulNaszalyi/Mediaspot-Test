@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "3538:80"
+    container_name: mediaspot
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
