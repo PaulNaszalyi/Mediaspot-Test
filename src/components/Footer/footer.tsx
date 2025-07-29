@@ -2,30 +2,34 @@ import {Box, Button} from "@mui/material";
 import {ArrowBack, ArrowForward} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
 
-interface PreviousButtonProps {
+interface ButtonProps {
     pathTo: string;
+    label?: string;
+    noIcon?: boolean;
 }
 
-interface NextButtonProps {
+interface NextButtonProps extends ButtonProps {
     disabled?: boolean;
-    pathTo: string;
 }
 
 interface FooterProps {
     nextButton: NextButtonProps;
-    previousButton?: PreviousButtonProps;
+    previousButton?: ButtonProps;
+    contentCentered?: boolean;
 }
 
-const Footer = ({nextButton, previousButton}: FooterProps) => {
+const Footer = ({nextButton, previousButton, contentCentered}: FooterProps) => {
     const navigate = useNavigate();
 
     return (
         <Box
             sx={{
                 display: 'flex',
-                justifyContent: 'space-between',
+                justifyContent: contentCentered ? 'center' : 'space-between',
                 alignItems: 'center',
-                flexDirection: previousButton ? 'row' : 'row-reverse'
+                flexDirection: previousButton ? 'row' : 'row-reverse',
+                marginTop: '40px',
+                gap: '16px'
             }}
         >
             {
@@ -35,7 +39,8 @@ const Footer = ({nextButton, previousButton}: FooterProps) => {
                         sx={{p: '12px 16px'}}
                         onClick={() => navigate(previousButton.pathTo)}
                     >
-                        <ArrowBack/> &nbsp; Previous
+                        {!previousButton.noIcon && <><ArrowBack/> &nbsp;</>}
+                        {previousButton.label ? previousButton.label : `Back`}
                     </Button>
                 )
             }
@@ -46,7 +51,8 @@ const Footer = ({nextButton, previousButton}: FooterProps) => {
                 sx={{p: '12px 16px'}}
                 onClick={() => navigate(nextButton.pathTo)}
             >
-                Next &nbsp; <ArrowForward/>
+                {nextButton.label ? nextButton.label : `Next`}
+                {!nextButton.noIcon && <> &nbsp; <ArrowForward/></>}
             </Button>
         </Box>
     )

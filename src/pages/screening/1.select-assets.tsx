@@ -12,7 +12,7 @@ import {Asset} from "../../types";
 import {secondsToTime} from "../../utils/time.ts";
 import {capitalizeFirstLetter} from "../../utils/chars.ts";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
-import {selectAsset, deselectAsset, selectSelectedAssets} from "../../features/screenings/screeningSlice.ts";
+import {selectAsset, deselectAsset, selectSelectedAssets, setStep} from "../../features/screenings/screeningSlice.ts";
 import Footer from "../../components/Footer/footer.tsx";
 
 const SelectAssets = () => {
@@ -28,6 +28,10 @@ const SelectAssets = () => {
             dispatch(selectAsset(asset));
         }
     }
+
+    useEffect(() => {
+        dispatch(setStep(1));
+    }, [dispatch]);
 
     useEffect(() => {
         fetch('/api/assets')

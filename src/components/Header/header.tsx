@@ -5,6 +5,10 @@ import {selectScreeningStep} from "../../features/screenings/screeningSlice.ts";
 const Header = () => {
     const currentStep = useAppSelector(selectScreeningStep);
 
+    if(currentStep > 3) {
+        return null;
+    }
+
     return (
         <header style={{marginBottom: "56px"}}>
             <Typography component="h1" variant="h2" sx={{mb: 4}}>

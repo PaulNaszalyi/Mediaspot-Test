@@ -9,3 +9,12 @@ export const secondsToTime = (seconds: number): string => {
         secs > 0 ? `${secs}s` : ''
     ].filter(Boolean).join(' ') || '0s';
 }
+
+export const displayDate = (date: Date | string): string => {
+    const d = new Date(date);
+    return d.toLocaleString('fr-FR', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+    });
+}
