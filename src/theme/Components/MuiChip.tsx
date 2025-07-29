@@ -1,5 +1,4 @@
 import { Components, Theme } from "@mui/material";
-import { hexToRgbString } from "../../Utils/Helpers/cssUtils";
 
 const MuiChip: NonNullable<Components<Theme>["MuiChip"]> = {
   styleOverrides: {
@@ -65,7 +64,7 @@ const MuiChip: NonNullable<Components<Theme>["MuiChip"]> = {
         height: "16px",
       },
     }),
-    labelMedium: ({ theme }) => ({
+    labelMedium: () => ({
       paddingLeft: 4,
       paddingRight: 4,
     }),
@@ -189,7 +188,7 @@ const MuiChip: NonNullable<Components<Theme>["MuiChip"]> = {
     },
     {
       props: { size: "large" },
-      style: ({ theme }) => ({
+      style: () => ({
         height: 32,
         fontSize: 13,
         fontWeight: 500,
@@ -206,7 +205,7 @@ const MuiChip: NonNullable<Components<Theme>["MuiChip"]> = {
     },
     {
       props: { size: "micro" },
-      style: ({ theme }) => ({
+      style: () => ({
         height: 16,
         fontSize: "11px",
         fontWeight: 500,

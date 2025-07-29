@@ -2,7 +2,7 @@ import { Components, Theme } from "@mui/material";
 
 const MuiSvgIcon: NonNullable<Components<Theme>["MuiSvgIcon"]> = {
   styleOverrides: {
-    root: (props) => ({
+    root: () => ({
       fontSize: 20,
     }),
     fontSizeSmall: () => ({

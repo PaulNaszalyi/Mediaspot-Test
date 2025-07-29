@@ -22,7 +22,7 @@ const MuiAutocomplete: NonNullable<Components<Theme>["MuiAutocomplete"]> = {
         color: theme.palette.text.tier,
       },
     }),
-    endAdornment: ({ theme }) => ({
+    endAdornment: () => ({
       top: "calc(50% - 0px)", // was -11px before mui v5.15.12
       right: "2px !important",
 

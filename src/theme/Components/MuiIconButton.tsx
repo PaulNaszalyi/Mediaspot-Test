@@ -11,7 +11,7 @@ const MuiIconButton: NonNullable<Components<Theme>["MuiIconButton"]> = {
   variants: [
     {
       props: { size: "small" },
-      style: ({ theme }) => ({
+      style: () => ({
         width: "32px",
         height: "32px",
         svg: {
@@ -21,7 +21,7 @@ const MuiIconButton: NonNullable<Components<Theme>["MuiIconButton"]> = {
     },
     {
       props: { size: "medium" },
-      style: ({ theme }) => ({
+      style: () => ({
         width: "40px",
         height: "40px",
         svg: {
@@ -31,7 +31,7 @@ const MuiIconButton: NonNullable<Components<Theme>["MuiIconButton"]> = {
     },
     {
       props: { size: "large" },
-      style: ({ theme }) => ({
+      style: () => ({
         width: "48px",
         height: "48px",
         svg: {

@@ -58,7 +58,7 @@ const MuiOutlinedInput: NonNullable<Components<Theme>["MuiOutlinedInput"]> = {
         color: theme.palette.error.main,
       },
     }),
-    multiline: ({ theme }) => ({
+    multiline: () => ({
       padding: 0,
       ".MuiInputBase-input": {
         padding: "8px 12px",
