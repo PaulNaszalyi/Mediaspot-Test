@@ -107,7 +107,7 @@ const SelectAssets = () => {
                                             name={`${selectedAssets.some(selected => selected.id === asset.id) ? "Unselect" : "Select"} ${asset.title} ${asset.type}`}
                                         />
                                     </Box>
-                                    <Typography variant="body2" color="text.secondary" sx={{mb: 3}}>
+                                    <Typography variant="body2" color="text.secondary">
                                         {capitalizeFirstLetter(asset.type)} • {secondsToTime(asset.duration)}
                                     </Typography>
                                 </CardContent>

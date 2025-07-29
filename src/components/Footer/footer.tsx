@@ -3,9 +3,10 @@ import {ArrowBack, ArrowForward} from "@mui/icons-material";
 import {useNavigate} from "react-router-dom";
 
 interface ButtonProps {
-    pathTo: string;
+    pathTo?: string;
     label?: string;
     noIcon?: boolean;
+    onClick?: () => void;
 }
 
 interface NextButtonProps extends ButtonProps {
@@ -35,9 +36,9 @@ const Footer = ({nextButton, previousButton, contentCentered}: FooterProps) => {
             {
                 previousButton && (
                     <Button
-                        variant="outlined"
+                        variant="text"
                         sx={{p: '12px 16px'}}
-                        onClick={() => navigate(previousButton.pathTo)}
+                        onClick={() => navigate(previousButton.pathTo || '/screening/select-assets')}
                     >
                         {!previousButton.noIcon && <><ArrowBack/> &nbsp;</>}
                         {previousButton.label ? previousButton.label : `Back`}
@@ -49,7 +50,7 @@ const Footer = ({nextButton, previousButton, contentCentered}: FooterProps) => {
                 color="primary"
                 disabled={nextButton.disabled}
                 sx={{p: '12px 16px'}}
-                onClick={() => navigate(nextButton.pathTo)}
+                onClick={() => nextButton.onClick ? nextButton.onClick() : navigate(nextButton.pathTo || '/screening/select-assets')}
             >
                 {nextButton.label ? nextButton.label : `Next`}
                 {!nextButton.noIcon && <> &nbsp; <ArrowForward/></>}

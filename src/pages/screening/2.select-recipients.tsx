@@ -1,5 +1,5 @@
 import Footer from "../../components/Footer/footer.tsx";
-import {Card, CardContent, Typography, TextField, Chip, Box} from "@mui/material";
+import {Card, CardContent, Typography, TextField, Chip, Box, Alert} from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
 import {
     selectRecipients,
@@ -19,20 +19,28 @@ const SelectRecipients = () => {
     const validUntil = useAppSelector(selectValidUntil);
     const message = useAppSelector(selectMessage);
     const [inputValue, setInputValue] = useState('');
+    const [emailFormatWarning, setEmailFormatWarning] = useState(false);
 
     useEffect(() => {
         dispatch(setStep(2));
     }, [dispatch]);
 
+    const emailValidationRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter' && inputValue.trim()) {
             event.preventDefault();
             const email = inputValue.trim();
+            if (!emailValidationRegex.test(email)) {
+                setEmailFormatWarning(true);
+                return;
+            }
             if (email && !recipients.includes(email)) {
                 dispatch(setRecipients([...recipients, email]));
             }
             setInputValue('');
         }
+        setEmailFormatWarning(false);
     };
 
     const handleRemoveRecipient = (emailToRemove: string) => {
@@ -71,8 +79,15 @@ const SelectRecipients = () => {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        sx={{mb: 2}}
+                        sx={{mb: 1}}
                     />
+
+                    {
+                        emailFormatWarning &&
+                        <Alert severity="warning" sx={{mb: 1}}>
+                            Please enter a valid email address
+                        </Alert>
+                    }
 
                     <Box sx={{display: 'flex', gap: 1, mb: 5}}>
                         {recipients.map((email, index) => (
@@ -97,7 +112,13 @@ const SelectRecipients = () => {
                         label="Valid until"
                         value={validUntil}
                         onChange={handleDateChange}
-                        sx={{mb: 1}}
+                        sx={{
+                            mb: 1,
+                            '& input[type="date"]::-webkit-calendar-picker-indicator': {
+                                filter: 'invert(1)',
+                                cursor: 'pointer'
+                            }
+                        }}
                         InputLabelProps={{
                             shrink: true,
                         }}
