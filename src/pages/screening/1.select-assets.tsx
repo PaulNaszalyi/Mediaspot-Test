@@ -119,6 +119,10 @@ const SelectAssets = () => {
                 }
             </Grid>
             <Footer
+                previousButton={{
+                    pathTo: "/",
+                    label: "Back to homepage"
+                }}
                 nextButton={{
                     pathTo: "/screening/select-recipients",
                     disabled: !selectedAssets.length

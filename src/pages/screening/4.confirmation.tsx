@@ -4,14 +4,21 @@ import {setStep, resetForm} from "../../features/screenings/screeningSlice.ts";
 import {Box, Typography} from "@mui/material";
 import {CheckCircle} from "@mui/icons-material";
 import Footer from "../../components/Footer/footer.tsx";
+import {useNavigate} from "react-router-dom";
 
 const Confirmation = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(resetForm());
         dispatch(setStep(4));
     }, [dispatch]);
+
+    const handleBackToHomepage = () => {
+        dispatch(setStep(0));
+        navigate('/');
+    }
 
     return (
         <Box sx={{
@@ -42,7 +49,7 @@ const Confirmation = () => {
                 </Typography>
                 <Footer
                     previousButton={{
-                        pathTo: "/screening/select-assets",
+                        onClick: handleBackToHomepage,
                         label: "Back to homepage",
                         noIcon: true
                     }}

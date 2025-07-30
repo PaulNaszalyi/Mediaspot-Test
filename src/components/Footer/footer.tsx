@@ -38,7 +38,7 @@ const Footer = ({nextButton, previousButton, contentCentered}: FooterProps) => {
                     <Button
                         variant="text"
                         sx={{p: '12px 16px'}}
-                        onClick={() => navigate(previousButton.pathTo || '/screening/select-assets')}
+                        onClick={() => previousButton.onClick ? previousButton.onClick() : navigate(previousButton.pathTo || '/screening/select-assets')}
                     >
                         {!previousButton.noIcon && <><ArrowBack/> &nbsp;</>}
                         {previousButton.label ? previousButton.label : `Back`}

@@ -5,7 +5,7 @@ import {selectScreeningStep} from "../../features/screenings/screeningSlice.ts";
 const Header = () => {
     const currentStep = useAppSelector(selectScreeningStep);
 
-    if(currentStep > 3) {
+    if(currentStep > 3 || currentStep < 1) {
         return null;
     }
 
