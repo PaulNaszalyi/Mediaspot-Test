@@ -11,7 +11,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.mediaspot.rule=Host(`mediaspot.paulnaszalyi.fr`)"
       - "traefik.http.routers.mediaspot.tls=true"
-      - "traefik.http.routers.mediaspot.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.mediaspot.tls.certresolver=myresolver"
       - "traefik.http.services.mediaspot.loadbalancer.server.port=80"
     networks:
       - traefik-net
