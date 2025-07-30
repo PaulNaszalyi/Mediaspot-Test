@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   web:
-    image: registry.paulnaszalyi.fr/mediaspot-frontend:latest
+    image: registry.paulnaszalyi.fr/mediaspot:latest
     ports:
-      - "80:80"
-    container_name: mediaspot-frontend-prod
+      - "3538:80"
+    container_name: mediaspot
     restart: unless-stopped
     environment:
       - NODE_ENV=production
